@@ -57,6 +57,9 @@ def format_text(message):
 def word_is_in_blacklist(message):
     print("checking blacklist...")
 
+    # remove symbols for check
+    message = re.sub(c.SYMBOLS, "", message)
+
     # read blacklist and format as list
     with open(blacklist, "r", encoding="utf-8") as f:
         blacklisted_words = f.read()
