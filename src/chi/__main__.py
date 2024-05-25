@@ -5,19 +5,20 @@ pip install py-cord
 pip install translate
 
 """
+
 import os, sys, discord, logging
 from discord.ext import commands
+
 # from cogs.core.server_settings import Settings
 
 COGS_ROOT_PATH = os.path.join(os.path.dirname(__file__), "cogs")
 
 logger = logging.getLogger(__name__)
-prefix = '~'
+prefix = "~"
 intents = discord.Intents.all()
 
-# This sets the prefix to use for commands. 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or(prefix),
-                   intents=intents)
+# This sets the prefix to use for commands.
+bot = commands.Bot(command_prefix=commands.when_mentioned_or(prefix), intents=intents)
 
 # async def traceback(ctx, e):
 #     print(f'{e}')
@@ -28,11 +29,13 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or(prefix),
 #     embed.set_image(url='https://media.tenor.com/zpvRLlcI5mEAAAAC/anime_blush_error_moan.gif')
 #     await ctx.send(embed=embed, delete_after=10)
 
+
 @bot.event
 async def on_ready():
-    print(f'{bot.user} [{bot.user.id}] is connected to the following guilds:')
+    print(f"{bot.user} [{bot.user.id}] is connected to the following guilds:")
     for guild in bot.guilds:
-        print(f'\t- {guild.name}(id: {guild.id})')
+        print(f"\t- {guild.name}(id: {guild.id})")
+
 
 # In this function, we load all the files from the Cogs folder.
 # Cogs are just files that hold our commands.
@@ -61,15 +64,20 @@ def load_cogs():
                 if len(sys.argv) > 1:
                     bot.load_extension(f"cogs.{file[:-3]}")
                 else:
-                    bot.load_extension(f"wake.cogs.{file[:-3]}")
+                    bot.load_extension(f"chi.cogs.{file[:-3]}")
                 print(f"Loaded Cog: {cog_path}")
             except Exception as e:
-                logger.warning("Failed to load: {%s}.{%s}, {%s}", COGS_ROOT_PATH, file, e)
+                logger.warning(
+                    "Failed to load: {%s}.{%s}, {%s}", COGS_ROOT_PATH, file, e
+                )
                 failed_to_load.append(f"{file[:-3]}")
     if failed_to_load:
-        logger.warning(f"Cog loading finished. Failed to load the following cogs: {', '.join(failed_to_load)}")
+        logger.warning(
+            f"Cog loading finished. Failed to load the following cogs: {', '.join(failed_to_load)}"
+        )
     else:
         print("Loaded all cogs successfully.")
+
 
 # In this function, we use an argument or env file to load the Bot-Token.
 def load_token_and_run():
@@ -82,9 +90,11 @@ def load_token_and_run():
     else:
         bot.run(os.getenv("DISCORD_TOKEN"))
 
+
 def main():
     load_cogs()
     load_token_and_run()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

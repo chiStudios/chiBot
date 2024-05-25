@@ -7,12 +7,15 @@ import versioneer
 
 install_requires = []
 with pathlib.Path("requirements.txt").open() as requirements_txt:
-    install_requires = [str(requirement) for requirement in pkg_resources.parse_requirements(requirements_txt)]
+    install_requires = [
+        str(requirement)
+        for requirement in pkg_resources.parse_requirements(requirements_txt)
+    ]
 
 
 setuptools.setup(
-    name="wake",
-    description="An installable version of the wake bot.",
+    name="chi",
+    description="An installable version of the chi bot.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     version=versioneer.get_version(),
@@ -20,7 +23,7 @@ setuptools.setup(
     package_dir={"": "src"},
     include_package_data=True,
     packages=setuptools.find_packages(where="src"),
-    entry_points={"console_scripts": ["wake=wake.__main__:main"]},
+    entry_points={"console_scripts": ["chi=chi.__main__:main"]},
     package_data={"": ["*.toml"]},
     install_requires=install_requires,
     classifiers=[

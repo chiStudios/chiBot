@@ -10,7 +10,7 @@ from . import _constants as c
 # TODO: test /translate gen imi to japanese for list index out of range error
 
 logger = logging.getLogger(__name__)
-blacklist = Path.cwd().joinpath("src", "wake", "cogs", "core", "blacklisted_words.txt")
+blacklist = Path.cwd().joinpath("src", "chi", "cogs", "core", "blacklisted_words.txt")
 
 
 def create_embed(

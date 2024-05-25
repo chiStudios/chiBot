@@ -8,10 +8,10 @@ services:
 #       - ./db:/data/db
 #     restart: always
 
-  wake:
+  chi:
     build: .
-    image: wake:${TAG}
-    container_name: wake_bot_${ENVIRONMENT}
+    image: chi:${TAG}
+    container_name: chi_bot_${ENVIRONMENT}
     env_file: .env
     # links:
     #   - "mongo:mongo"
