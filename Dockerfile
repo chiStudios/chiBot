@@ -19,7 +19,7 @@ COPY resources/ /code/resources
 COPY src /code/src
 COPY README.md /code/README.md
 
-RUN pip uninstall -y wake && \
+RUN pip uninstall -y chi && \
     pip install .
 
-ENTRYPOINT ["wake"]
+ENTRYPOINT ["chi"]
